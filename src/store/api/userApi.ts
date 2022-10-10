@@ -1,72 +1,71 @@
-import { api } from './api'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { api } from './api'
 
-export const postApi = api.injectEndpoints({
+export const userApi = api.injectEndpoints({
   endpoints(build) {
     return {
       /**
        * 分页查询列表
        */
-      listPostByPage: build.query<
-        BaseResponse<PageInfo<PostType.PostVO>>,
-        PostType.PostQueryRequest
+      listUserByPage: build.query<
+        BaseResponse<PageInfo<UserType.UserVO>>,
+        UserType.UserQueryRequest
       >({
         query(param) {
           return {
             method: 'GET',
-            url: 'post/list/page',
+            url: 'user/list/page',
             params: param,
           }
         },
-        providesTags: ['Post']
+        providesTags: ['User']
       }),
 
       /**
        * 添加
        */
-      addPost: build.mutation<BaseResponse<number>, PostType.PostAddRequest>({
+      addUser: build.mutation<BaseResponse<number>, UserType.UserAddRequest>({
         query(params) {
           return {
             method: 'POST',
-            url: '/post/add',
+            url: '/user/add',
             headers: {
               'Content-Type': 'application/json',
             },
             data: params,
           }
         },
-        invalidatesTags: (result)=>[{type: 'Post', id: result?.data}]
+        invalidatesTags: ['User'],
       }),
 
       /**
        * 根据 id 查询
        */
-      getPostById: build.query<
-        BaseResponse<BaseResponse<PostType.Post>>,
+      getUserById: build.query<
+        BaseResponse<BaseResponse<UserType.User>>,
         number
       >({
         query(id) {
           return {
             method: 'GET',
-            url: 'post/get',
+            url: 'user/get',
             params: { id },
           }
         },
-        providesTags: (result, err, id)=>[{type: 'Post', id: id}]
+        providesTags: (result, err, id)=>[{type: 'User', id: id}]
       }),
-      
 
       /**
        * 更新
        */
-      updatePost: build.mutation<
+      updateUser: build.mutation<
         BaseResponse<boolean>,
-        PostType.PostUpdateRequest
+        UserType.UserUpdateRequest
       >({
         query(params) {
           return {
             method: 'POST',
-            url: '/post/update',
+            url: '/user/update',
             headers: {
               'Content-Type': 'application/json',
             },
@@ -79,9 +78,9 @@ export const postApi = api.injectEndpoints({
       /**
        * 删除
        */
-      deletePost: build.mutation<
+      deleteUser: build.mutation<
         BaseResponse<boolean>,
-        PostType.PostDeleteRequest
+        UserType.UserDeleteRequest
       >({
         query(params) {
           return {
@@ -91,40 +90,18 @@ export const postApi = api.injectEndpoints({
               'Content-Type': 'application/json',
             },
             data: params,
-            url: '/post/delete',
+            url: '/user/delete',
           }
         },
         invalidatesTags: (result, err, param)=>[{type: 'Post', id: param.id}]
-      }),
-
-      /**
-       * 点赞 / 取消点赞
-       */
-      postDoThumb: build.mutation<
-        BaseResponse<number>,
-        PostType.PostDoThumbRequest
-      >({
-        query(params) {
-          return {
-            method: 'POST',
-            params: { ...params },
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            data: params,
-            url: '/post/thumb',
-          }
-        },
-        invalidatesTags: (result, err, param)=>[{type: 'Post', id: param.postId}]
       }),
     }
   },
 })
 export const {
-  useListPostByPageQuery,
-  useAddPostMutation,
-  useDeletePostMutation,
-  useGetPostByIdQuery,
-  usePostDoThumbMutation,
-  useUpdatePostMutation,
-} = postApi
+  useListUserByPageQuery,
+  useAddUserMutation,
+  useDeleteUserMutation,
+  useGetUserByIdQuery,
+  useUpdateUserMutation,
+} = userApi
