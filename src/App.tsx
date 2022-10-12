@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/logo.svg'
-import './App.css'
+import style from './App.less'
 import { Route, Routes } from 'react-router-dom'
 import IndexPage from './pages/index'
+import PostAddpage from './pages/post/add'
+import GlobalLayout from './components/GlobalLayout'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -64,9 +66,12 @@ function App() {
       },
     ],
   }, */}
-      <Routes>
-        <Route path='/' element={<IndexPage/>}/>
-      </Routes>
+      <GlobalLayout>
+        <Routes>
+          <Route path="/" element={<IndexPage />} />
+          <Route path="/post/add" element={<PostAddpage />} />
+        </Routes>
+      </GlobalLayout>
     </div>
   )
 }

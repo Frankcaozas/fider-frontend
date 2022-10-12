@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const env = import.meta.env
 const baseQuery = fetchBaseQuery({
   baseUrl: env.PROD
-    ? env.ImportBaseUrl.VITE_DEV_URL
-    : env.ImportBaseUrl.VITE_PROD_URL,
+    ? 'https://www.lovefinder.cn/api'
+    : 'http://localhost:8103/api',
 })
 
 export const api = createApi({

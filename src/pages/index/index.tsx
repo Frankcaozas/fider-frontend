@@ -1,4 +1,5 @@
 import React from 'react';
+import GlobalFooter from '../../components/GlobalFooter';
 import { useListPostByPageQuery } from '../../store/api/postApi';
 
 /**
@@ -20,9 +21,7 @@ const IndexPage: React.FC = () => {
   return (
     <div>
       IndexPage
-      {
-        
-      }
+      <GlobalFooter/>
     </div>
   );
 };
