@@ -1,7 +1,9 @@
 import { Image, Layout, Menu } from 'antd'
 import { Content, Header } from 'antd/lib/layout/layout'
 import React, { ReactNode } from 'react'
-import logo from '../../../public/vite.svg'
+import logo from '/vite.svg'
+import GlobalFooter from '../GlobalFooter'
+import './index.less'
 
 interface props {
   children: ReactNode
@@ -9,14 +11,18 @@ interface props {
 const GlobalLayout: React.FC<props> = ({ children }) => {
   return (
     <Layout>
-      <Header
-        style={{
-          padding: '0 20px',
-        }}>
-        <div>
-          <Image src={logo} height={45} preview={false} />
+      <Header className="layout-header">
+        <div className="header-left">
+          <div className="logo-container">
+            <img id="logo" src={logo} alt="" />
+            <h1>Fider</h1>
+          </div>
         </div>
+
         <Menu
+          style={{
+            flex: 'auto',
+          }}
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
@@ -26,9 +32,11 @@ const GlobalLayout: React.FC<props> = ({ children }) => {
               key,
               label: `nav ${key}`,
             }
-          })}></Menu>
+          })}
+        />
       </Header>
       <Content>{children}</Content>
+      <GlobalFooter />
     </Layout>
   )
 }

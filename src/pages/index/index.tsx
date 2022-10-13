@@ -21,7 +21,7 @@ const IndexPage: React.FC = () => {
   return (
     <div>
       IndexPage
-      <GlobalFooter/>
+      
     </div>
   );
 };
