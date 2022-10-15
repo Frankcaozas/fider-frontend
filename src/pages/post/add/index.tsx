@@ -1,12 +1,11 @@
-import React from 'react';
-import GlobalFooter from '../../../components/GlobalFooter';
+import React from 'react'
 
 const PostAddpage: React.FC = () => {
   return (
     <div>
-      
+      postadd
     </div>
-  );
-};
+  )
+}
 
-export default PostAddpage;
+export default PostAddpage

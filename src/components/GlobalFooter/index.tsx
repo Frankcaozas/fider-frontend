@@ -1,7 +1,7 @@
-import { CrownOutlined, GithubOutlined, UserOutlined } from '@ant-design/icons';
-import { DefaultFooter } from '@ant-design/pro-components';
-import React from 'react';
-import './index.less';
+import { GithubOutlined, UserOutlined } from '@ant-design/icons'
+import { DefaultFooter } from '@ant-design/pro-components'
+import React from 'react'
+import './index.less'
 
 /**
  * 全局 Footer
@@ -9,7 +9,7 @@ import './index.less';
  * @author frankcao
  */
 const GlobalFooter: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   return (
     <DefaultFooter
@@ -36,10 +36,9 @@ const GlobalFooter: React.FC = () => {
           href: 'https://github.com/liyupi/',
           blankTarget: true,
         },
-        
       ]}
     />
-  );
-};
+  )
+}
 
-export default GlobalFooter;
+export default GlobalFooter
