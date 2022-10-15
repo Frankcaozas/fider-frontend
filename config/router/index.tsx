@@ -1,7 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
-import GlobalLayout from "../../src/components/GlobalLayout";
-import IndexPage from '../../src/pages/index/index';
-import PostAddpage from "../../src/pages/post/add";
+import { createBrowserRouter } from 'react-router-dom'
+import GlobalLayout from '../../src/components/GlobalLayout'
+import IndexPage from '../../src/pages/index/index'
+import PostAddpage from '../../src/pages/post/add'
+import LoginPage from '../../src/pages/user/login'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -9,14 +10,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <IndexPage/>
+        element: <IndexPage/>,
       },
       {
         path: '/post/add',
-        element: <PostAddpage/>
-      }
-    ]
-  }
+        element: <PostAddpage/>,
+      },
+      {
+        path: '/user/login',
+        element: <LoginPage/>,
+      },
+    ],
+  },
 ])
 
 export default router

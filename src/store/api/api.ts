@@ -9,7 +9,7 @@ const baseQuery = fetchBaseQuery({
 
 export const api = createApi({
   reducerPath: 'splitApi',
-  baseQuery: baseQuery,
+  baseQuery,
   tagTypes: ['Tag', 'Post', 'User', 'Report'],
-  endpoints: () => ({})
+  endpoints: () => ({}),
 })

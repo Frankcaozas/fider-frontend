@@ -1,5 +1,4 @@
 import { api } from './api'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const postApi = api.injectEndpoints({
   endpoints(build) {
@@ -18,7 +17,7 @@ export const postApi = api.injectEndpoints({
             params: param,
           }
         },
-        providesTags: ['Post']
+        providesTags: ['Post'],
       }),
 
       /**
@@ -35,7 +34,7 @@ export const postApi = api.injectEndpoints({
             data: params,
           }
         },
-        invalidatesTags: (result)=>[{type: 'Post', id: result?.data}]
+        invalidatesTags: result => [{ type: 'Post', id: result?.data }],
       }),
 
       /**
@@ -52,9 +51,8 @@ export const postApi = api.injectEndpoints({
             params: { id },
           }
         },
-        providesTags: (result, err, id)=>[{type: 'Post', id: id}]
+        providesTags: (result, err, id) => [{ type: 'Post', id }],
       }),
-      
 
       /**
        * 更新
@@ -73,7 +71,7 @@ export const postApi = api.injectEndpoints({
             data: params,
           }
         },
-        invalidatesTags: (result, err, param)=>[{type: 'Post', id: param.id}]
+        invalidatesTags: (result, err, param) => [{ type: 'Post', id: param.id }],
       }),
 
       /**
@@ -94,7 +92,7 @@ export const postApi = api.injectEndpoints({
             url: '/post/delete',
           }
         },
-        invalidatesTags: (result, err, param)=>[{type: 'Post', id: param.id}]
+        invalidatesTags: (result, err, param) => [{ type: 'Post', id: param.id }],
       }),
 
       /**
@@ -115,7 +113,7 @@ export const postApi = api.injectEndpoints({
             url: '/post/thumb',
           }
         },
-        invalidatesTags: (result, err, param)=>[{type: 'Post', id: param.postId}]
+        invalidatesTags: (result, err, param) => [{ type: 'Post', id: param.postId }],
       }),
     }
   },

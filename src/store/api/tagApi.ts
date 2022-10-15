@@ -1,4 +1,3 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { api } from './api'
 
 export const tagApi = api.injectEndpoints({
@@ -32,7 +31,7 @@ export const tagApi = api.injectEndpoints({
             params: {},
           }
         },
-        providesTags: ['Tag']
+        providesTags: ['Tag'],
       }),
 
       /**
@@ -49,7 +48,7 @@ export const tagApi = api.injectEndpoints({
             data: params,
           }
         },
-        invalidatesTags: (res, err, param) => [{ type: 'Tag', id: res?.data }],
+        invalidatesTags: (res, _err, _param) => [{ type: 'Tag', id: res?.data }],
       }),
 
       /**
@@ -63,7 +62,7 @@ export const tagApi = api.injectEndpoints({
             params: {},
           }
         },
-        providesTags: ['Tag']
+        providesTags: ['Tag'],
       }),
 
       /**
