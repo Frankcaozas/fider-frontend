@@ -84,11 +84,12 @@ export const userApi = api.injectEndpoints({
         query(params) {
           return {
             method: 'POST',
-            params: { ...params },
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: {
+              data: params
+            },
             url: '/user/delete',
           }
         },
@@ -105,10 +106,7 @@ export const userApi = api.injectEndpoints({
        query(params) {
          return {
            method: 'POST',
-           headers: {
-             'Content-Type': 'application/json',
-           },
-           data: params,
+           body: {data: params},
            url: '/user/login',
          }
        },

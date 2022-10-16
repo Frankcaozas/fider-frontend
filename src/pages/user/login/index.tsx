@@ -1,23 +1,28 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { LoginForm, ProFormText } from '@ant-design/pro-components'
 import { message } from 'antd'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useUserLoginMutation } from '../../../store/api/userApi'
+import { login } from '../../../store/reducers/authSlice'
 import logo from '/vite.svg'
 const LoginPage = () => {
-  const [login] = useUserLoginMutation()
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
+  const [loginFn, { error }] = useUserLoginMutation()
   /**
    * 用户登录
    * @param fields
    */
   const doUserLogin = async (fields: UserType.UserLoginRequest) => {
+    console.log(fields)
     const hide = message.loading('登录中')
     try {
-      const res = await login({ ...fields })
+      const res = await loginFn(fields)
+      dispatch(login(res.data.data))
+      console.log(res.data.data)
       message.success('登录成功')
-      login({
-        token: res.
-      })
+      console.log(state);
       // 重定向到之前页面
     }
     catch (e: any) {
