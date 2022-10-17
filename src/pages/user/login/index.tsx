@@ -2,31 +2,35 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { LoginForm, ProFormText } from '@ant-design/pro-components'
 import { message } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { RootState, useAppSelector } from '../../../store'
 import { useUserLoginMutation } from '../../../store/api/userApi'
 import { login } from '../../../store/reducers/authSlice'
 import logo from '/vite.svg'
 const LoginPage = () => {
+  const searchParams = useSearchParams()
   const dispatch = useDispatch()
-  const state = useSelector(state => state)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const state = useAppSelector(state => state.auth)
   const [loginFn, { error }] = useUserLoginMutation()
   /**
    * 用户登录
    * @param fields
    */
   const doUserLogin = async (fields: UserType.UserLoginRequest) => {
-    console.log(fields)
     const hide = message.loading('登录中')
     try {
-      const res = await loginFn(fields)
-      dispatch(login(res.data.data))
-      console.log(res.data.data)
+      const res = await loginFn({...fields}).unwrap()
+      dispatch(login({...res.data}))
       message.success('登录成功')
-      console.log(state);
+      console.log(state)
       // 重定向到之前页面
+      // navigate('/')
+      
     }
     catch (e: any) {
-      message.error(e.message)
+      message.error(e.message ?? '登录失败')
     }
     finally {
       hide()
@@ -39,12 +43,13 @@ const LoginPage = () => {
         background:
           'url(https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png)',
         backgroundSize: '100% 100%',
+        paddingTop: '10vh'
       }}
     >
       <LoginForm<UserType.UserLoginRequest>
         logo={logo}
         title="Fider"
-        subTitle="发现你的另一半"
+        subTitle="find everything here"
         onFinish={async (formData) => {
           await doUserLogin(formData)
         }}

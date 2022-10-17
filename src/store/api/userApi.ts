@@ -34,6 +34,7 @@ export const userApi = api.injectEndpoints({
             data: params,
           }
         },
+        
         invalidatesTags: ['User'],
       }),
 
@@ -103,11 +104,19 @@ export const userApi = api.injectEndpoints({
        BaseResponse<UserType.UserVO>,
        UserType.UserLoginRequest
      >({
-       query(params) {
+       query(body) {
          return {
            method: 'POST',
-           body: {data: params},
+           body,
            url: '/user/login',
+           
+          //  validateStatus(response, body) {
+          //   console.log(body)
+          //   const code = body.code ?? 5000
+          //   console.error(`request error`, body);
+          //   console.log('err hand')
+          //   throw new Error(body.message ?? '服务器错误');
+          //  },
          }
        },
      }),
