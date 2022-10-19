@@ -34,7 +34,7 @@ export const reportApi = api.injectEndpoints({
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
           }
         },
         invalidatesTags: (res, _err, _param) => [{ type: 'Report', id: res?.data }],
@@ -71,7 +71,7 @@ export const reportApi = api.injectEndpoints({
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
           }
         },
         invalidatesTags: (res, err, param) => [{ type: 'Report', id: param.id }],
@@ -84,11 +84,10 @@ export const reportApi = api.injectEndpoints({
         query(params) {
           return {
             method: 'POST',
-            params: { ...params },
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
             url: '/report/delete',
           }
         },

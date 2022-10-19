@@ -68,7 +68,7 @@ export const postApi = api.injectEndpoints({
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
           }
         },
         invalidatesTags: (result, err, param) => [{ type: 'Post', id: param.id }],
@@ -84,11 +84,10 @@ export const postApi = api.injectEndpoints({
         query(params) {
           return {
             method: 'POST',
-            params: { ...params },
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
             url: '/post/delete',
           }
         },
@@ -105,11 +104,10 @@ export const postApi = api.injectEndpoints({
         query(params) {
           return {
             method: 'POST',
-            params: { ...params },
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
             url: '/post/thumb',
           }
         },

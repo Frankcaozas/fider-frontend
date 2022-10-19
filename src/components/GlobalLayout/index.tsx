@@ -24,10 +24,11 @@ const GlobalLayout: React.FC = () => {
   return (
     <Layout>
       <Header className="layout-header">
+        
         <div className="header-left">
           <a href='/'>
             <div className="logo-container">
-              <img id="logo" src={logo} alt="" />
+              <img id="logo" src={'https://api.iconify.design/carbon:chart-histogram.svg'} alt="" />
               <h1>Fider</h1>
             </div>
           </a>

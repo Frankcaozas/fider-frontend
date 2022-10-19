@@ -11,9 +11,9 @@ const LoginPage = () => {
   const searchParams = useSearchParams()
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const location = useLocation()
   const state = useAppSelector(state => state.auth)
   const [loginFn, { error }] = useUserLoginMutation()
+  const [serchParam, setSerchParam] = useSearchParams()
   /**
    * 用户登录
    * @param fields
@@ -26,7 +26,8 @@ const LoginPage = () => {
       message.success('登录成功')
       console.log(state)
       // 重定向到之前页面
-      // navigate('/')
+      const path = serchParam.get('redirect') ?? '/'
+      navigate(path)
       
     }
     catch (e: any) {
@@ -40,8 +41,8 @@ const LoginPage = () => {
     <div
       style={{
         height: '100vh',
-        background:
-          'url(https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png)',
+        // background:
+        //   'url(https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png)',
         backgroundSize: '100% 100%',
         paddingTop: '10vh'
       }}

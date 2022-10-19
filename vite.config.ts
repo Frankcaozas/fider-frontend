@@ -9,9 +9,18 @@ export default defineConfig({
       less: {
         javascriptEnabled: true,
         modifyVars: {
-          '@primary-color': '#FF86D6',
+          '@primary-color': '#12766e',
+          dark: true,
         },
       },
     },
   },
+  resolve: {
+    alias: [
+      {
+        find: /^~/, 
+        replacement: '',
+      },
+    ],
+  }
 })

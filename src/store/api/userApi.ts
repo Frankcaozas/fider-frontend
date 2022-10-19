@@ -31,7 +31,7 @@ export const userApi = api.injectEndpoints({
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
           }
         },
         
@@ -69,7 +69,7 @@ export const userApi = api.injectEndpoints({
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
           }
         },
         invalidatesTags: (result, err, param) => [{ type: 'Post', id: param.id }],
@@ -88,9 +88,7 @@ export const userApi = api.injectEndpoints({
             headers: {
               'Content-Type': 'application/json',
             },
-            body: {
-              data: params
-            },
+            body: params,
             url: '/user/delete',
           }
         },
@@ -134,7 +132,7 @@ export const userApi = api.injectEndpoints({
            headers: {
              'Content-Type': 'application/json',
            },
-           data: {},
+           body: {},
            url: '/user/logout',
          }
        },
@@ -153,7 +151,7 @@ export const userApi = api.injectEndpoints({
            headers: {
              'Content-Type': 'application/json',
            },
-           data: { param },
+           body: param,
            url: '/user/register',
          }
        },

@@ -45,7 +45,7 @@ export const tagApi = api.injectEndpoints({
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
           }
         },
         invalidatesTags: (res, _err, _param) => [{ type: 'Tag', id: res?.data }],
@@ -72,11 +72,10 @@ export const tagApi = api.injectEndpoints({
         query(params) {
           return {
             method: 'POST',
-            params: { ...params },
             headers: {
               'Content-Type': 'application/json',
             },
-            data: params,
+            body: params,
             url: '/tag/delete',
           }
         },
