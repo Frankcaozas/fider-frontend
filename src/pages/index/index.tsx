@@ -17,8 +17,7 @@ const IndexPage: React.FC = () => {
     sortField: 'createTime',
     sortOrder: 'descend',
   };
-  const { data, isError } = useListPostByPageQuery(initSearchParams)
-  console.log(data)
+  // const { data, isError } = useListPostByPageQuery(initSearchParams)
   return (
     <div>
       IndexPage

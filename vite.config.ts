@@ -1,9 +1,9 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
-
+import Unocss from 'unocss/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [Unocss(), react()],
   css: {
     preprocessorOptions: {
       less: {
@@ -18,9 +18,9 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: /^~/, 
+        find: /^~/,
         replacement: '',
       },
     ],
-  }
+  },
 })

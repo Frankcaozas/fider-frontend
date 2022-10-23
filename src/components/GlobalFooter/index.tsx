@@ -1,6 +1,7 @@
 import { GithubOutlined, UserOutlined } from '@ant-design/icons'
 import { DefaultFooter } from '@ant-design/pro-components'
 import React from 'react'
+import { useDark } from '../../hooks/useDark'
 import './index.less'
 
 /**
@@ -10,34 +11,25 @@ import './index.less'
  */
 const GlobalFooter: React.FC = () => {
   const currentYear = new Date().getFullYear()
-
+  const setDark = useDark()
+  const toggleDark = () => {
+    setDark((pre) => !pre)
+  }
   return (
-    <DefaultFooter
-      className="default-footer"
-      copyright={`${currentYear} frankcao + 备案号`}
-      links={[
-        {
-          key: '1',
-          title: (
-            <>
-              <UserOutlined /> 站长:frankcao
-            </>
-          ),
-          href: 'https://space.bilibili.com/12890453/',
-          blankTarget: true,
-        },
-        {
-          key: '2',
-          title: (
-            <>
-              <GithubOutlined /> 开源地址
-            </>
-          ),
-          href: 'https://github.com/liyupi/',
-          blankTarget: true,
-        },
-      ]}
-    />
+    <nav flex justify-center>
+      <button icon-btn onClick={toggleDark}>
+        <div i-carbon-sun dark:i-carbon-moon ></div>
+      </button>
+      <a
+        icon-btn i-carbon-logo-github
+        rel="noreferrer"
+        href="https://github.com/antfu/vitesse-lite"
+        target="_blank"
+        title="GitHub"
+      />
+      
+    </nav>
+
   )
 }
 
